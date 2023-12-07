@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter city name" spellcheck="false">
+            <button><img src="C:\Users\karthick R\Downloads\icons8-search (2).svg">  </button>
+        </div>
+        <div class="error">
+            <h1> invalid city name !</h1>
+
+        </div>
+        <div class="weather">
+            <img  class="weather-icon" src="C:\Users\karthick R\Downloads\cloudy-day.png">
+            <h1 class="temp">22°c</h1>
+            <h2 class="city">New York</h2>
+            <div class="detail">
+                <div class="col"> 
+                    <img src="/C:\Users\karthick R\Downloads\icons8-humidity-80.png">
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="/C:\Users\karthick R\Downloads\icons8-wind-64.png">
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>wind speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+<script>
+    const apikey = "53d1798f3ac043e7e2a8ea68cf6fdeaa";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+    const searchBox = document.querySelector(".search Input");
+    const searchBtn = document.querySelector(".search Button");
+    const weathericon = document.querySelector(".weather-icon");
+
+    async function chechweather(city){
+        const response = await fetch(apiUrl + city + '&appid=' + apikey);
+
+        if(response.status == 404){
+            document.querySelector(".error").style.display = "block";
+            document.querySelector(".weather").style.display = "none";
+        }else{
+
+             var data = await response.json();
+
+        console.log(data);
+
+        document.querySelector(".city").innerHTML = data.name;
+        document.querySelector(".temp").innerHTML =Math.round(data.main.temp)  + "°c";
+        document.querySelector(".humidity").innerHTML = data.main.temp +"%";
+        document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+
+        if(data.weather[0].main == "Clouds"){
+            weathericon.src = "C:/Users/karthick R/Downloads/cloudy-day.png";
+        }
+        else if(data.weather[0].main == "Clear"){
+            weathericon.src = "C:/Users/karthick R/Downloads/icons8-weather-144.png";
+        }
+        else if(data.weather[0].main == "Rain"){
+            weathericon.src = "C:/Users/karthick R/Downloads/heavy-rain.png";
+        }
+        else if(data.weather[0].main == "Drizzle"){
+            weathericon.src = "C:/Users/karthick R/Downloads/drizzle.png";
+        }
+        else if(data.weather[0].main == "Mist"){
+            weathericon.src = "C:/Users/karthick R/Downloads/fog.png";
+        }
+        else{
+            weathericon.src = "C:\Users\karthick R\Downloads\icons8-weather-144.png";
+            
+        }
+
+        document.querySelector(".error").style.display = "none";
+        document.querySelector(".weather").style.display = "block";
+
+        }
+
+
+
+       
+        
+    }
+
+searchBtn.addEventListener("click", ()=>{
+    chechweather(searchBox.value);
+
+})
+
+
+</script>
+
+
+
+</html>
