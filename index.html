@@ -10,26 +10,26 @@
     <div class="card">
         <div class="search">
             <input type="text" placeholder="Enter city name" spellcheck="false">
-            <button><img src="C:\Users\karthick R\Downloads\icons8-search (2).svg">  </button>
+            <button><img src="icons8-search (2).svg">  </button>
         </div>
         <div class="error">
             <h1> invalid city name !</h1>
 
         </div>
         <div class="weather">
-            <img  class="weather-icon" src="C:\Users\karthick R\Downloads\cloudy-day.png">
+            <img  class="weather-icon" src="cloudy-day.png">
             <h1 class="temp">22°c</h1>
             <h2 class="city">New York</h2>
             <div class="detail">
                 <div class="col"> 
-                    <img src="/C:\Users\karthick R\Downloads\icons8-humidity-80.png">
+                    <img src="icons8-humidity-80.png">
                     <div>
                         <p class="humidity">50%</p>
                         <p>humidity</p>
                     </div>
                 </div>
                 <div class="col">
-                    <img src="/C:\Users\karthick R\Downloads\icons8-wind-64.png">
+                    <img src="icons8-wind-64.png">
                     <div>
                         <p class="wind">15 km/h</p>
                         <p>wind speed</p>
@@ -64,22 +64,22 @@
         document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
 
         if(data.weather[0].main == "Clouds"){
-            weathericon.src = "C:/Users/karthick R/Downloads/cloudy-day.png";
+            weathericon.src = "cloudy-day.png";
         }
         else if(data.weather[0].main == "Clear"){
-            weathericon.src = "C:/Users/karthick R/Downloads/icons8-weather-144.png";
+            weathericon.src = "icons8-weather-144.png";
         }
         else if(data.weather[0].main == "Rain"){
-            weathericon.src = "C:/Users/karthick R/Downloads/heavy-rain.png";
+            weathericon.src = "heavy-rain.png";
         }
         else if(data.weather[0].main == "Drizzle"){
-            weathericon.src = "C:/Users/karthick R/Downloads/drizzle.png";
+            weathericon.src = "drizzle.png";
         }
         else if(data.weather[0].main == "Mist"){
-            weathericon.src = "C:/Users/karthick R/Downloads/fog.png";
+            weathericon.src = "fog.png";
         }
         else{
-            weathericon.src = "C:/Users/karthick R/Downloads/icons8-weather-144.png";
+            weathericon.src = "icons8-weather-144.png";
             
         }
 
